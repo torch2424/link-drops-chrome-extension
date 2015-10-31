@@ -36,22 +36,23 @@ function init() {
 function saveTab() {
 
     //Get the current tab url
-    chrome.tabs.getCurrent(function (tab) {
-
+    chrome.tabs.query(
+        {active: true, currentWindow: true},
+        function (tab) {
         //Callback, create the payload
-        var payload = {
+        let payload = {
             "extensionCode": code,
-            "url": tab.url
+            "url": tab[0].url
         };
 
         // construct an HTTP request
-        var xhttp = new XMLHttpRequest();
+        let xhttp = new XMLHttpRequest();
         xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
 
         xhttp.send(payload, function() {
             // Update status to let user know options were saved.
             //Timeout the div after it is displayed
-            var status = document.getElementById('status');
+            let status = document.getElementById('status');
             status.textContent = 'Dropped!';
             setTimeout(function() {
               status.textContent = '';
@@ -64,19 +65,22 @@ function saveTab() {
 function saveAllTabs() {
 
     //Get the current tab url
-    chrome.tabs.query(function (tabs) {
+    chrome.tabs.query(
+        {currentWindow: true},
+    function (tabs) {
 
+        console.log(tabs);
         //Loop through every tab
-        for(tab in tabs)
+        for(let tab in tabs)
         {
             //Callback, create the payload
-            var payload = {
+            let payload = {
                 "extensionCode": code,
                 "url": tab.url
             };
 
             // construct an HTTP request
-            var xhttp = new XMLHttpRequest();
+            let xhttp = new XMLHttpRequest();
             xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
 
             xhttp.send(payload, function() {

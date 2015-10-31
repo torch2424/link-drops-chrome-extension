@@ -33,12 +33,11 @@ function init() {
 function saveTab() {
 
     //Get the current tab url
-    chrome.tabs.getCurrent(function (tab) {
-
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tab) {
         //Callback, create the payload
         var payload = {
             "extensionCode": code,
-            "url": tab.url
+            "url": tab[0].url
         };
 
         // construct an HTTP request
@@ -61,10 +60,12 @@ function saveTab() {
 function saveAllTabs() {
 
     //Get the current tab url
-    chrome.tabs.query(function (tabs) {
+    chrome.tabs.query({ currentWindow: true }, function (tabs) {
 
+        console.log(tabs);
         //Loop through every tab
-        for (tab in tabs) {
+
+        var _loop = function (tab) {
             //Callback, create the payload
             var payload = {
                 "extensionCode": code,
@@ -87,6 +88,10 @@ function saveAllTabs() {
                     }, 2000);
                 }
             });
+        };
+
+        for (var tab in tabs) {
+            _loop(tab);
         }
     });
 }

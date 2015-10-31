@@ -22,3 +22,13 @@ body {
     margin-right: auto;
     text-align: center;
 }
+
+.hide {
+    display: none;
+}
+
+#mainPopup
+{
+		height: 215px;
+		width: 300px;
+}

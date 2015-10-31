@@ -10,10 +10,21 @@
     <link href="styles/main.css" rel="stylesheet">
     <!-- endbuild -->
   </head>
-  <body class = "popupBG">
-    <div class = "card">
+  <body id = "mainPopup" class = "popupBG">
+    <div class = "card center">
         <h1>linkDrops</h1>
         <img class = "center" src = "../images/linkDrops32.gif" />
+
+        <!-- Nothing found, go to options -->
+        <h3 id = "sorry">Sorry, no chrome extension code was found.
+            Please "Right Click" the extension icon above,
+            and select options to set your
+            chrome extension code.</h3>
+
+        <!-- Buttons to save the tab, or all tabs -->
+        <div id = "buttons">
+            
+        </div>
     </div>
 
     <!-- build:js scripts/vendor.js -->

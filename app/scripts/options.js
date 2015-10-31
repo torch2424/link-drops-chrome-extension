@@ -24,6 +24,7 @@ function saveCode() {
 function restore_options() {
   //First set the onclick listener to the save button
   var save = document.getElementById('saveButton');
+
   // onClick's logic below:
   save.addEventListener('click', saveCode);
 

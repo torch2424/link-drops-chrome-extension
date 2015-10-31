@@ -37,12 +37,62 @@ function saveTab() {
 
     //Get the current tab url
     chrome.tabs.getCurrent(function (tab) {
+
         //Callback, create the payload
-        
+        var payload = {
+            "extensionCode": code,
+            "url": tab.url
+        };
 
+        // construct an HTTP request
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
 
-        xhttp.open("GET", "ajax_info.txt", true);
-        xhttp.send();
+        xhttp.send(payload, function() {
+            // Update status to let user know options were saved.
+            //Timeout the div after it is displayed
+            var status = document.getElementById('status');
+            status.textContent = 'Dropped!';
+            setTimeout(function() {
+              status.textContent = '';
+          }, 2000);
+        });
+    });
+}
+
+//Save all of the tabs
+function saveAllTabs() {
+
+    //Get the current tab url
+    chrome.tabs.query(function (tabs) {
+
+        //Loop through every tab
+        for(tab in tabs)
+        {
+            //Callback, create the payload
+            var payload = {
+                "extensionCode": code,
+                "url": tab.url
+            };
+
+            // construct an HTTP request
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
+
+            xhttp.send(payload, function() {
+                //Dropped all tabs should be displayed once
+                if(tab.index = tabs[tabs.length - 1].index)
+                {
+                    // Update status to let user know options were saved.
+                    //Timeout the div after it is displayed
+                    var status = document.getElementById('status');
+                    status.textContent = 'Dropped All Tabs!';
+                    setTimeout(function() {
+                      status.textContent = '';
+                  }, 2000);
+                }
+            });
+        }
     });
 }
 

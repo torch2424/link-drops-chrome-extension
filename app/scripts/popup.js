@@ -53,6 +53,12 @@ function saveTab() {
                 status.textContent = '';
             }, 2000);
         });
+    },
+    //Error Checking
+    function (err) {
+
+        //Redirect to the error function
+        Error(err);
     });
 }
 
@@ -80,7 +86,7 @@ function saveAllTabs() {
                 //Dropped all tabs should be displayed once
                 if (tab.index = tabs[tabs.length - 1].index) {
                     // Update status to let user know options were saved.
-                    //Timeout the div after it is displayed
+                    // Timeout the div after it is displayed
                     var status = document.getElementById('status');
                     status.textContent = 'Dropped All Tabs!';
                     setTimeout(function () {
@@ -93,8 +99,30 @@ function saveAllTabs() {
         for (var tab in tabs) {
             _loop(tab);
         }
+    },
+    //Error Checking
+    function (err) {
+        //Redirect to the error function
+        Error(err);
     });
 }
+
+//Error function
+function Error(err) {
+
+    var message = "";
+
+    //Session is invalid!
+    if (err.status == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";else message = "Error! Could not connect to linkDrops";
+
+    // Update status to let user know options were saved.
+    // Timeout the div after it is displayed
+    var status = document.getElementById('status');
+    status.textContent = 'Dropped All Tabs!';
+    setTimeout(function () {
+        status.textContent = '';
+    }, 3000);
+};
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', init);

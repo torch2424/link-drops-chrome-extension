@@ -60,8 +60,8 @@ function saveTab() {
         function (tab) {
         //Callback, create the payload
         let payload = {
-            "extensionCode": code,
-            "url": tab[0].url
+            "token": code,
+            "content": tab[0].url
         };
 
         // construct an HTTP request
@@ -93,8 +93,8 @@ function saveAllTabs() {
         {
             //Callback, create the payload
             let payload = {
-                "extensionCode": code,
-                "url": tab.url
+                "token": code,
+                "content": tab.url
             };
 
             // construct an HTTP request

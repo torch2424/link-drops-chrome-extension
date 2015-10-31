@@ -53,8 +53,8 @@ function saveTab() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tab) {
         //Callback, create the payload
         var payload = {
-            "extensionCode": code,
-            "url": tab[0].url
+            "token": code,
+            "content": tab[0].url
         };
 
         // construct an HTTP request
@@ -84,8 +84,8 @@ function saveAllTabs() {
         var _loop = function (tab) {
             //Callback, create the payload
             var payload = {
-                "extensionCode": code,
-                "url": tab.url
+                "token": code,
+                "content": tab.url
             };
 
             // construct an HTTP request

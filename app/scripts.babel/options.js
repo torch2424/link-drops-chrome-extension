@@ -4,7 +4,6 @@
 function saveCode() {
     //Get the code value
     var code = document.getElementById('code').value;
-
     //Set the code in the options
     chrome.storage.sync.set({
       extensionCode: code
@@ -16,13 +15,17 @@ function saveCode() {
       status.textContent = 'Code saved!';
       setTimeout(function() {
         status.textContent = '';
-      }, 750);
+    }, 2000);
     });
 }
 
 // Restores the chrome extension code
 // stored in chrome.storage.
 function restore_options() {
+  //First set the onclick listener to the save button
+  var save = document.getElementById('saveButton');
+    // onClick's logic below:
+    save.addEventListener('click', saveCode);
 
   // Use default value of nothing
   chrome.storage.sync.get({

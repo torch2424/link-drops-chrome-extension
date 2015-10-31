@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "linkDrops",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "The Official Chrome Extension for linkDrops",
+    "description": "The description of the application"
+  }
+}

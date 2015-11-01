@@ -35,7 +35,7 @@ function Response(res, successMsg) {
     var message = "";
 
     //Session is invalid!
-    if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";else if (res != 200) message = "Error! Could not connect to linkDrops";else message = successMsg;
+    if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";else if (res != 200) message = "Error" + res + "! Could not connect to linkDrops";else message = successMsg;
 
     // Update status to let user know options were saved.
     // Timeout the div after it is displayed
@@ -60,6 +60,9 @@ function saveTab() {
         // construct an HTTP request
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
+
+        //Set the post type
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         //Check for responses
         xhttp.onreadystatechange = function () {
@@ -87,6 +90,9 @@ function saveAllTabs() {
             // construct an HTTP request
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
+
+            //Set the post type
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
             //check for responses
             xhttp.onreadystatechange = function () {

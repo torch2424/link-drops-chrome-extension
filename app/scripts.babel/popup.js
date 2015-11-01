@@ -14,7 +14,7 @@ function init() {
   }, function(items) {
 
     //In this call back, set the code to the retrieved value
-    code =  items.extensionCode;
+    code = items.extensionCode;
 
     //if we have a code show the stuff
     if(code.length > 0)
@@ -39,7 +39,7 @@ function Response(res, successMsg) {
 
    //Session is invalid!
    if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";
-   else if(res != 200) message = "Error! Could not connect to linkDrops";
+   else if(res != 200) message = "Error" + res + "! Could not connect to linkDrops";
    else message = successMsg;
 
    // Update status to let user know options were saved.
@@ -68,6 +68,9 @@ function saveTab() {
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
 
+        //Set the post type
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
         //Check for responses
         xhttp.onreadystatechange = function() {
             //Send the status to the response function
@@ -86,7 +89,7 @@ function saveAllTabs() {
     chrome.tabs.query(
         {currentWindow: true},
     function (tabs) {
-        
+
         //Loop through every tab
         for(let tab in tabs)
         {
@@ -99,6 +102,9 @@ function saveAllTabs() {
             // construct an HTTP request
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
+
+            //Set the post type
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
             //check for responses
             xhttp.onreadystatechange = function() {

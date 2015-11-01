@@ -35,7 +35,7 @@ function Response(res, successMsg) {
     var message = "";
 
     //Session is invalid!
-    if (res.status == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";else if (res.status != 200) message = "Error! Could not connect to linkDrops";else message = successMsg;
+    if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";else if (res != 200) message = "Error! Could not connect to linkDrops";else message = successMsg;
 
     // Update status to let user know options were saved.
     // Timeout the div after it is displayed
@@ -77,10 +77,6 @@ function saveAllTabs() {
 
     //Get the current tab url
     chrome.tabs.query({ currentWindow: true }, function (tabs) {
-
-        console.log(tabs);
-        //Loop through every tab
-
         var _loop = function (tab) {
             //Callback, create the payload
             var payload = {
@@ -102,6 +98,7 @@ function saveAllTabs() {
             xhttp.send(payload);
         };
 
+        //Loop through every tab
         for (var tab in tabs) {
             _loop(tab);
         }

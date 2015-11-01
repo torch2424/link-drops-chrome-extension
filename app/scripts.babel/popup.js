@@ -38,8 +38,8 @@ function Response(res, successMsg) {
    var message = "";
 
    //Session is invalid!
-   if (res.status == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";
-   else if(res.status != 200) message = "Error! Could not connect to linkDrops";
+   if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";
+   else if(res != 200) message = "Error! Could not connect to linkDrops";
    else message = successMsg;
 
    // Update status to let user know options were saved.
@@ -86,8 +86,7 @@ function saveAllTabs() {
     chrome.tabs.query(
         {currentWindow: true},
     function (tabs) {
-
-        console.log(tabs);
+        
         //Loop through every tab
         for(let tab in tabs)
         {

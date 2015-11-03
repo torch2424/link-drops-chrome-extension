@@ -1,5 +1,5 @@
 # link-drops-chrome-extension
-The Official Chrome Extension for linkDrops!
+The Official Chrome Extension for [linkDrops](https://github.com/torch2424/link-drops)!
 
 ##This readme will be done at a later date.
 

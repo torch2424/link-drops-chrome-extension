@@ -39,7 +39,7 @@ function Response(res, successMsg) {
 
    //Session is invalid!
    if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";
-   else if(res != 200) message = "Error" + res + "! Could not connect to linkDrops";
+   else if(res < 200 || res > 299) message = "Error " + res + "! Could not connect to linkDrops";
    else message = successMsg;
 
    // Update status to let user know options were saved.
@@ -66,10 +66,10 @@ function saveTab() {
 
         // construct an HTTP request
         let xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
+        xhttp.open("POST", "http://srv.kondeo.com/dumps", true);
 
         //Set the post type
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.setRequestHeader('Content-Type', 'application/json');
 
         //Check for responses
         xhttp.onreadystatechange = function() {
@@ -78,7 +78,7 @@ function saveTab() {
         }
 
         //Send the json
-        xhttp.send(payload);
+        xhttp.send(JSON.stringify(payload));
     });
 }
 
@@ -104,7 +104,7 @@ function saveAllTabs() {
             xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
 
             //Set the post type
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.setRequestHeader('Content-Type', 'application/json');
 
             //check for responses
             xhttp.onreadystatechange = function() {
@@ -112,8 +112,8 @@ function saveAllTabs() {
                 Response(xhttp.status, "Dropped!");
             }
 
-            //Send the Json!
-            xhttp.send(payload);
+            //Send the json
+            xhttp.send(JSON.stringify(payload));
         }
     });
 }

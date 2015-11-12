@@ -59,7 +59,7 @@ function saveTab() {
 
         // construct an HTTP request
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://srv.kondeo.com/dumps", true);
+        xhttp.open("POST", "http://srv.kondeo.com:3000/dumps", true);
 
         //Set the post type
         xhttp.setRequestHeader('Content-Type', 'application/json');

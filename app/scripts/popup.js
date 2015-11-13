@@ -32,6 +32,10 @@ function init() {
 //Error function
 function Response(res, successMsg) {
 
+    //disable our button clicks
+    document.getElementById('saveTab').disabled = true;
+    document.getElementById('saveAllTabs').disabled = true;
+
     var message = "";
 
     //Session is invalid!
@@ -43,7 +47,11 @@ function Response(res, successMsg) {
     status.textContent = message;
     setTimeout(function () {
         status.textContent = '';
-    }, 3000);
+
+        //disable our button clicks
+        document.getElementById('saveTab').disabled = true;
+        document.getElementById('saveAllTabs').disabled = true;
+    }, 5000);
 };
 
 //Save the current tab

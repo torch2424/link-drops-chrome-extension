@@ -1,6 +1,11 @@
-html, body {
+.popupHtml, .popupBody {
     height: 300px;
     width: 400px;
+}
+
+.optionsHtml, .optionsBody {
+    height: 400px;
+    width: 300px;
 }
 
 body {
@@ -36,6 +41,13 @@ body {
 {
 		height: 215px;
 		width: 300px;
+}
+
+.optionsContainer {
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tabButton {

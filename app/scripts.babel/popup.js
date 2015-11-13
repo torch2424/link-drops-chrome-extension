@@ -54,8 +54,8 @@ function Response(res, successMsg) {
      status.textContent = '';
 
      //disable our button clicks
-     document.getElementById('saveTab').disabled = true;
-     document.getElementById('saveAllTabs').disabled = true;
+     document.getElementById('saveTab').disabled = false;
+     document.getElementById('saveAllTabs').disabled = false;
  }, 5000);
 };
 

@@ -22,11 +22,10 @@ function Response(res, successMsg) {
    let status = document.getElementById('status');
    status.textContent = message;
    setTimeout(function() {
+       //set the disabled to the save button
+       let save = document.getElementById('saveButton').disabled = false;
      status.textContent = '';
- }, 3000);
-
- //set the disabled to the save button
- let save = document.getElementById('saveButton').disabled = false;
+ }, 5000);
 };
 
 // Saves options to chrome.storage

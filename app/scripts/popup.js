@@ -39,7 +39,7 @@ function Response(res, successMsg) {
     var message = "";
 
     //Session is invalid!
-    if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";else if (res < 200 || res > 299) message = "Error " + res + "! Could not connect to linkDrops";else message = successMsg;
+    if (res == 401) message = "Email or password is inccorect!";else if (res < 200 || res > 299) message = "Error " + res + "! Could not connect to linkDrops";else message = successMsg;
 
     // Update status to let user know options were saved.
     // Timeout the div after it is displayed
@@ -49,9 +49,9 @@ function Response(res, successMsg) {
         status.textContent = '';
 
         //disable our button clicks
-        document.getElementById('saveTab').disabled = true;
-        document.getElementById('saveAllTabs').disabled = true;
-    }, 5000);
+        document.getElementById('saveTab').disabled = false;
+        document.getElementById('saveAllTabs').disabled = false;
+    }, 6000);
 };
 
 //Save the current tab

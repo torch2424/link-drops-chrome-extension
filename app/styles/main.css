@@ -4,13 +4,18 @@
 }
 
 .optionsHtml, .optionsBody {
-    height: 400px;
+    height: 425px;
     width: 300px;
+}
+
+.optionsBody {
+    width: 340px;
 }
 
 body {
   padding: 10px;
   color: #292029;
+  font-size: 14px;
 }
 
 .popupBG {
@@ -55,6 +60,11 @@ body {
     margin-bottom: 10px;
 }
 
+.status {
+    height: 25px;
+    font-size: 16px;
+}
+
 .btn {
   position: relative;
 
@@ -70,9 +80,11 @@ body {
   border-width: 0;
   outline: none;
   border-radius: 2px;
+  font-weight: 100 !important;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
 
   background-color: #732918;
+  background-image: none !important;
   color: #ecf0f1;
 
   transition: background-color .3s;
@@ -80,6 +92,7 @@ body {
 
 .btn:hover, .btn:focus {
   background-color: #9c4131;
+  color: #ecf0f1 !important;
 }
 
 .btn > * {
@@ -118,4 +131,8 @@ body {
   padding-top: 120%;
 
   transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.btn:disabled {
+    opacity: .5;
 }

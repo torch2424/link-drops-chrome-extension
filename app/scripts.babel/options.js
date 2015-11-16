@@ -6,7 +6,7 @@ function Response(res, successMsg) {
    var message = "";
 
    //Session is invalid!
-   if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";
+   if (res == 401) message = "Sorry, your login is invalid, please 'right click' the linkDrops icon and select options";
    else if(res < 200 || res > 299) message = "Error " + res + "! Could not connect to linkDrops";
    else
    {
@@ -25,7 +25,7 @@ function Response(res, successMsg) {
        //set the disabled to the save button
        let save = document.getElementById('saveButton').disabled = false;
      status.textContent = '';
- }, 5000);
+ }, 600);
 };
 
 // Saves options to chrome.storage

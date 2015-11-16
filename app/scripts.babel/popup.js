@@ -42,7 +42,7 @@ function Response(res, successMsg) {
    var message = "";
 
    //Session is invalid!
-   if (res == 401) message = "Your Extension code is invalid, please visit the 'My Account' Page on linkDrops";
+   if (res == 401) message = "Email or password is inccorect!";
    else if(res < 200 || res > 299) message = "Error " + res + "! Could not connect to linkDrops";
    else message = successMsg;
 
@@ -56,7 +56,7 @@ function Response(res, successMsg) {
      //disable our button clicks
      document.getElementById('saveTab').disabled = false;
      document.getElementById('saveAllTabs').disabled = false;
- }, 5000);
+ }, 6000);
 };
 
 //Save the current tab

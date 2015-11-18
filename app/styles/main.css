@@ -63,6 +63,7 @@ body {
 .status {
     height: 25px;
     font-size: 16px;
+    margin-top: 10px;
 }
 
 .btn {
